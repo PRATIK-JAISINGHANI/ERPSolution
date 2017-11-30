@@ -1,4 +1,5 @@
-﻿using ERPSolution.Models;
+﻿using ERPSolution.DataContracts;
+using ERPSolution.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,10 @@ namespace ERPSolution.Controllers
             return View(GetIdentityById(Id));
         }
 
-        public ActionResult UpdateIdentity()
+        public ActionResult UpdateIdentity(IdentityRequest request)
         {
-            return View();
+            UpdateIdentityInternal(request);
+            return View("RetrieveIdentity", GetIdentityById(request.Id));
         }
 
         public ActionResult DeleteIdentity(Guid Id)
@@ -52,6 +54,17 @@ namespace ERPSolution.Controllers
         {
             var context = new ERPContext();
             return context.Identity.Where(i => i.Id == Id).FirstOrDefault();
+        }
+
+        private void UpdateIdentityInternal(IdentityRequest request)
+        {
+            var context = new ERPContext();
+            var existingIdentity = context.Identity.Where(i => i.Id == request.Id).FirstOrDefault();
+            existingIdentity.Code = request.Code;
+            existingIdentity.Name = request.Name;
+            existingIdentity.ValidationStatus = request.ValidationStatus;
+            existingIdentity.MobileNo = request.MobileNo;
+            existingIdentity.SaveAll();
         }
 
         private void DeleteIdentityInternal(Guid Id)

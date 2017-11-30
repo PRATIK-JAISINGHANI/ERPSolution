@@ -47,7 +47,9 @@ namespace ERPSolution.Models
         public override bool SaveAll()
         {
             var context = base.ERPContext;
-            context.Identity.Add(this);
+            if (context.Identity.Where(i => i.Id == this.Id).Count() == 0)
+                context.Identity.Add(this);
+            //
             return context.SaveChanges() > 0 ? true : false;
         }
 
