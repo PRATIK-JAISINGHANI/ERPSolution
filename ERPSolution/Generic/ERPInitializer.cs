@@ -52,8 +52,6 @@ namespace ERPSolution.Models
             user.CreatedBy = identity.CreatedBy;
             user.CreatedDateTime = DateTime.Now;
             user.SaveAll();
-
-
         }
     }
 }
