@@ -23,7 +23,7 @@ namespace ERPSolution.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            ViewBag.Address = "Sindh Ginning and Hardware Mart, \n Chaurdhari Square, \n Amravati - 444603";
             return View();
         }
     }

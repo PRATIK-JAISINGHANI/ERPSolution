@@ -13,5 +13,25 @@ namespace ERPSolution.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
+
+        public ActionResult RetrieveUser(Guid id)
+        {
+            return View();
+        }
+
+        public ActionResult UpdateUser()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteUser(Guid id)
+        {
+            return View();
+        }
     }
 }

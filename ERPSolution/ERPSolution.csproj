@@ -215,11 +215,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Identity\Index.cshtml" />
+    <Content Include="Views\UserMaster\CreateUser.cshtml" />
+    <Content Include="Views\Identity\CreateIdentity.cshtml" />
+    <Content Include="Views\Identity\RetrieveIdentity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Identity\" />
-    <Folder Include="Views\UserMaster\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

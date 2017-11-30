@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ERPSolution.Models.Identity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateIdentity", "Identity")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMailId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValidationStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValidationStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDateTime)
+        </td>
+        <td> 
+            @Html.ActionLink("Edit", "RetrieveIdentity", "Identity", new { Id = (Guid)item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
