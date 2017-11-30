@@ -24,7 +24,7 @@ namespace ERPSolution.Controllers
 
         public ActionResult RetrieveIdentity(Guid Id)
         {
-            return View();
+            return View(GetIdentityById(Id));
         }
 
         public ActionResult UpdateIdentity()
@@ -32,9 +32,10 @@ namespace ERPSolution.Controllers
             return View();
         }
 
-        public ActionResult DeleteIdentity()
+        public ActionResult DeleteIdentity(Guid Id)
         {
-            return View();
+            DeleteIdentityInternal(Id);
+            return View(Index());
         }
 
         #endregion
@@ -47,6 +48,18 @@ namespace ERPSolution.Controllers
             return context.Identity.ToList();
         }
 
+        private Identity GetIdentityById(Guid Id)
+        {
+            var context = new ERPContext();
+            return context.Identity.Where(i => i.Id == Id).FirstOrDefault();
+        }
+
+        private void DeleteIdentityInternal(Guid Id)
+        {
+            var context = new ERPContext();
+            context.Identity.Remove(context.Identity.Where(i => i.Id == Id).First());
+            context.SaveChanges();
+        }
         #endregion
     }
 }

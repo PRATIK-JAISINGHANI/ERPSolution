@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.CreatedDateTime)
         </td>
         <td> 
-            @Html.ActionLink("Edit", "RetrieveIdentity", "Identity", new { Id = (Guid)item.Id }) |
+            @Html.ActionLink("Edit", "RetrieveIdentity", "Identity", new { Id = item.Id }, null) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "DeleteIdentity", "Identity", new { Id = item.Id }, null)
         </td>
     </tr>
 }
