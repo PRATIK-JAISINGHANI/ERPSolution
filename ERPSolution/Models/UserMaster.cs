@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERPSolution.Generic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +10,6 @@ namespace ERPSolution.Models
     public class UserMaster : MastersBase
     {
         #region Properties
-
-        public Guid Id { get; set; }
 
         public Guid IdentityId { get; set; }
 
@@ -30,14 +29,12 @@ namespace ERPSolution.Models
 
         public override bool SaveAll()
         {
-            var context = base.ERPContext;
-            context.UserMaster.Add(this);
-            return context.SaveChanges() > 0 ? true : false;
+          return base.SaveAll();
         }
 
         public override bool DeleteAll()
         {
-            var context = base.ERPContext;
+            var context = EntityBase.ERPContext;
             context.UserMaster.Remove(this);
             return context.SaveChanges() > 0 ? true : false;
         }

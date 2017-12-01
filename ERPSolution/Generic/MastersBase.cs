@@ -1,27 +1,49 @@
-﻿using System;
+﻿using ERPSolution.Generic;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace ERPSolution.Models
 {
-    public abstract class MastersBase
+    public abstract class MastersBase : EntityBase
     {
+        #region Constructor
+
+        public MastersBase()
+            : base()
+        {
+        }
+
+        #endregion
+
         #region Properties 
 
-        public ERPContext ERPContext { get { return new ERPContext(); } }
+        public ERPContext Context { get { return new ERPContext(); } }
 
+        [Required]
+        public Guid Id { get; set; }
+
+        [Required]
         public Guid CreatedBy { get; set; }
 
+        [Required]
         public DateTime CreatedDateTime { get; set; }
 
         #endregion
 
         #region Public Methods
 
-        public abstract bool SaveAll();
+        public virtual bool SaveAll()
+        {
+            return DbHelper.SaveAll(this.GetType(), this);
+        }
 
-        public abstract bool DeleteAll();
+        public virtual bool DeleteAll()
+        {
+            return DbHelper.DeleteAll(this.GetType(), this);
+        }
 
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERPSolution.Generic;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -19,8 +20,6 @@ namespace ERPSolution.Models
         #endregion
 
         #region Properties
-
-        public Guid Id { get; set; }
 
         public string Code { get; set; }
 
@@ -46,18 +45,12 @@ namespace ERPSolution.Models
 
         public override bool SaveAll()
         {
-            var context = base.ERPContext;
-            if (context.Identity.Where(i => i.Id == this.Id).Count() == 0)
-                context.Identity.Add(this);
-            //
-            return context.SaveChanges() > 0 ? true : false;
+          return base.SaveAll();
         }
 
         public override bool DeleteAll()
         {
-            var context = base.ERPContext;
-            context.Identity.Remove(this);
-            return context.SaveChanges() > 0 ? true : false;
+            return base.DeleteAll();
         }
 
         #endregion

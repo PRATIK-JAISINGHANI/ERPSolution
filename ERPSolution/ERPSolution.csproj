@@ -155,6 +155,8 @@
     <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="DataContracts\IdentityRequest.cs" />
+    <Compile Include="Generic\DbHelper.cs" />
+    <Compile Include="Generic\EntityBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

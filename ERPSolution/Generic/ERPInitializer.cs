@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ERPSolution.Generic;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace ERPSolution.Models
@@ -17,16 +19,18 @@ namespace ERPSolution.Models
         {
             base.Seed(context);
             //
-            foreach (var user2 in context.UserMaster)
-                context.UserMaster.Remove(user2);
+            EntityBase.ERPContext = context;
+            //
+            foreach (var user2 in EntityBase.ERPContext.UserMaster)
+                EntityBase.ERPContext.UserMaster.Remove(user2);
 
-            foreach (var id in context.Identity)
-                context.Identity.Remove(id);
+            foreach (var id in EntityBase.ERPContext.Identity)
+                EntityBase.ERPContext.Identity.Remove(id);
 
-            foreach (var secureData in context.SecureData)
-                context.SecureData.Remove(secureData);
+            foreach (var secureData in EntityBase.ERPContext.SecureData)
+                EntityBase.ERPContext.SecureData.Remove(secureData);
 
-            context.SaveChanges();
+            EntityBase.ERPContext.SaveChanges();
             //
 
             var identity = new Identity();
@@ -38,8 +42,10 @@ namespace ERPSolution.Models
             identity.MobileNo = "8055333533";
             identity.ValidationStatus = Common.EnumMaster.ValidationStatus.Suspended;
             identity.CreatedDateTime = DateTime.Now;
-            identity.SaveAll();
+            var result = identity.SaveAll();
 
+            var gh = identity.GetType();
+            
             var user = new UserMaster();
             user.Id = Guid.NewGuid();
             user.IdentityId = identity.Id;
