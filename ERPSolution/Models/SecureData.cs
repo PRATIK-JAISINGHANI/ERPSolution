@@ -16,16 +16,12 @@ namespace ERPSolution.Models
 
         public override bool SaveAll()
         {
-            var context = EntityBase.ERPContext;
-            context.SecureData.Add(this);
-            return context.SaveChanges() > 0 ? true : false;
+            return base.SaveAll();
         }
 
         public override bool DeleteAll()
         {
-            var context = EntityBase.ERPContext;
-            context.SecureData.Remove(this);
-            return context.SaveChanges() > 0 ? true : false;
+            return base.DeleteAll();
         }
 
         #endregion
