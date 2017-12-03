@@ -44,6 +44,7 @@ namespace ERPSolution.Models
             identity.CreatedDateTime = DateTime.Now;
             var result = identity.SaveAll();
 
+            //var data = DbHelper.ExecuteSqlQuery("Select * from [Identity]");
             var gh = identity.GetType();
             
             var user = new UserMaster();

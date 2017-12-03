@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +23,16 @@ namespace ERPSolution.Generic
         {
             EntityBase.ERPContext.Set(type).Remove(entityObject);
             return EntityBase.ERPContext.SaveChanges() > 0 ? true : false;
+        }
+
+        public static DataSet ExecuteSqlQuery(string queryToExecute)
+        {
+           return EntityBase.ERPContext.Database.SqlQuery<DataSet>(queryToExecute).FirstOrDefault();
+        }
+
+        public static DataSet ExecuteSqlQueryWithParameters(string queryToExecute, SqlParameter[] parameters)
+        {
+            return EntityBase.ERPContext.Database.SqlQuery<DataSet>(queryToExecute, parameters).FirstOrDefault();
         }
 
         #endregion

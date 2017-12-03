@@ -14,6 +14,8 @@ namespace ERPSolution.Models
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+        public DbSet<Session> Session { get; set; }
+
         public DbSet<UserMaster> UserMaster { get; set;}
 
         public DbSet<Identity> Identity { get; set; }

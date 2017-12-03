@@ -61,12 +61,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -150,16 +159,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\EnumMaster.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="DataContracts\IdentityRequest.cs" />
+    <Compile Include="DataContracts\LoginResponse.cs" />
     <Compile Include="Generic\DbHelper.cs" />
     <Compile Include="Generic\EntityBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\SessionHelper.cs" />
     <Compile Include="Migrations\201711281636392_InitialCreate.cs" />
     <Compile Include="Migrations\201711281636392_InitialCreate.Designer.cs">
       <DependentUpon>201711281636392_InitialCreate.cs</DependentUpon>
@@ -172,12 +185,17 @@
     <Compile Include="Migrations\201711301128199_Third.Designer.cs">
       <DependentUpon>201711301128199_Third.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712031833193_Fourth.cs" />
+    <Compile Include="Migrations\201712031833193_Fourth.Designer.cs">
+      <DependentUpon>201712031833193_Fourth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Generic\ERPContext.cs" />
     <Compile Include="Generic\ERPInitializer.cs" />
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Generic\MastersBase.cs" />
     <Compile Include="Models\SecureData.cs" />
+    <Compile Include="Models\Session.cs" />
     <Compile Include="Models\UserMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -222,6 +240,8 @@
     <Content Include="Views\UserMaster\CreateUser.cshtml" />
     <Content Include="Views\Identity\CreateIdentity.cshtml" />
     <Content Include="Views\Identity\RetrieveIdentity.cshtml" />
+    <Content Include="Views\UserMaster\Index.cshtml" />
+    <Content Include="Views\UserMaster\GetUserForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -248,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711301128199_Third.resx">
       <DependentUpon>201711301128199_Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031833193_Fourth.resx">
+      <DependentUpon>201712031833193_Fourth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
