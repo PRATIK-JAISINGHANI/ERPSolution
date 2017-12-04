@@ -16,11 +16,6 @@ namespace ERPSolution.Controllers
             return View(GetUsers());
         }
 
-        public ActionResult GetUserForm()
-        {
-            return View();
-        }
-
         public ActionResult CreateUser(UserMaster userMaster)
         {
             if(CreateUserInternal(userMaster))

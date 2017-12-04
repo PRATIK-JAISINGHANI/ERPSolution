@@ -27,8 +27,8 @@ namespace ERPSolution.Models
             foreach (var id in EntityBase.ERPContext.Identity)
                 EntityBase.ERPContext.Identity.Remove(id);
 
-            foreach (var secureData in EntityBase.ERPContext.SecureData)
-                EntityBase.ERPContext.SecureData.Remove(secureData);
+            foreach (var secureData2 in EntityBase.ERPContext.SecureData)
+                EntityBase.ERPContext.SecureData.Remove(secureData2);
 
             EntityBase.ERPContext.SaveChanges();
             //
@@ -44,21 +44,26 @@ namespace ERPSolution.Models
             identity.CreatedDateTime = DateTime.Now;
             var result = identity.SaveAll();
 
-            //var data = DbHelper.ExecuteSqlQuery("Select * from [Identity]");
-            var gh = identity.GetType();
-            
             var user = new UserMaster();
             user.Id = Guid.NewGuid();
             user.IdentityId = identity.Id;
             user.ContactId = Guid.NewGuid();
-            user.FirstName = "Pratik";
+            user.Code = identity.Code;
             user.Gender = Common.EnumMaster.Gender.Male;
-            user.MiddleName = "Mahesh";
-            user.LastName = "Jaisinghani";
+            user.Name = identity.Name;
             user.MobileNo = identity.MobileNo;
             user.CreatedBy = identity.CreatedBy;
             user.CreatedDateTime = DateTime.Now;
             user.SaveAll();
+
+            var secureData = new SecureData();
+            secureData.Id = Guid.NewGuid();
+            secureData.IdentityId = identity.Id;
+            secureData.Data = "q";
+            secureData.CreatedBy = user.CreatedBy;
+            secureData.CreatedDateTime = DateTime.Now;
+            secureData.SaveAll();
+
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ERPSolution
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{Id}",
-                defaults: new { controller = "Home", action = "Index", Id = UrlParameter.Optional }
+                defaults: new { controller = "Authenticate", action = "Index", Id = UrlParameter.Optional }
             );
         }
     }

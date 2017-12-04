@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using static ERPSolution.Common.EnumMaster;
 
 namespace ERPSolution.Models
 {
@@ -16,6 +17,10 @@ namespace ERPSolution.Models
         public string IPAddress { get; set; }
 
         public DateTime AuthorizeTill { get; set; }
+
+        public AuthenticationTypeValues AuthenticationType { get; set; }
+
+        public SessionStatusValues SessionStatus { get; set; }
 
         #endregion
     }

@@ -13,8 +13,8 @@ namespace ERPSolution
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{ActionName}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { controller = "Authentication", action = "Login", id = RouteParameter.Optional }
             );
         }
     }

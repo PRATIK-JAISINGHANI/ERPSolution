@@ -161,11 +161,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\EnumMaster.cs" />
+    <Compile Include="Controllers\AuthenticateController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="DataContracts\IdentityRequest.cs" />
+    <Compile Include="DataContracts\LoginRequest.cs" />
     <Compile Include="DataContracts\LoginResponse.cs" />
     <Compile Include="Generic\DbHelper.cs" />
     <Compile Include="Generic\EntityBase.cs" />
@@ -173,21 +175,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\SessionHelper.cs" />
-    <Compile Include="Migrations\201711281636392_InitialCreate.cs" />
-    <Compile Include="Migrations\201711281636392_InitialCreate.Designer.cs">
-      <DependentUpon>201711281636392_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201712040639305_First.cs" />
+    <Compile Include="Migrations\201712040639305_First.Designer.cs">
+      <DependentUpon>201712040639305_First.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711301036299_Second.cs" />
-    <Compile Include="Migrations\201711301036299_Second.Designer.cs">
-      <DependentUpon>201711301036299_Second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711301128199_Third.cs" />
-    <Compile Include="Migrations\201711301128199_Third.Designer.cs">
-      <DependentUpon>201711301128199_Third.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712031833193_Fourth.cs" />
-    <Compile Include="Migrations\201712031833193_Fourth.Designer.cs">
-      <DependentUpon>201712031833193_Fourth.cs</DependentUpon>
+    <Compile Include="Migrations\201712041050235_Second.cs" />
+    <Compile Include="Migrations\201712041050235_Second.Designer.cs">
+      <DependentUpon>201712041050235_Second.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Generic\ERPContext.cs" />
@@ -237,11 +231,13 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Identity\Index.cshtml" />
-    <Content Include="Views\UserMaster\CreateUser.cshtml" />
     <Content Include="Views\Identity\CreateIdentity.cshtml" />
     <Content Include="Views\Identity\RetrieveIdentity.cshtml" />
     <Content Include="Views\UserMaster\Index.cshtml" />
-    <Content Include="Views\UserMaster\GetUserForm.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\Home\HomePage2.cshtml" />
+    <Content Include="Views\Authenticate\Index.cshtml" />
+    <Content Include="Views\Authenticate\HomePage2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -260,17 +256,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711281636392_InitialCreate.resx">
-      <DependentUpon>201711281636392_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712040639305_First.resx">
+      <DependentUpon>201712040639305_First.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711301036299_Second.resx">
-      <DependentUpon>201711301036299_Second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711301128199_Third.resx">
-      <DependentUpon>201711301128199_Third.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712031833193_Fourth.resx">
-      <DependentUpon>201712031833193_Fourth.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712041050235_Second.resx">
+      <DependentUpon>201712041050235_Second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

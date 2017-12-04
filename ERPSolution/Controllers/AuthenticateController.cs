@@ -1,25 +1,32 @@
 ﻿using ERPSolution.DataContracts;
 using ERPSolution.Generic;
 using ERPSolution.Helper;
-using ERPSolution.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Web;
+using System.Web.Mvc;
 using static ERPSolution.Common.EnumMaster;
 
 namespace ERPSolution.Controllers
 {
-    public class AuthenticationController : ApiController
+    public class AuthenticateController : Controller
     {
-        [HttpPost, ActionName("Login")]
-        public HttpResponseMessage Login([FromUri]string userName, [FromUri] string password)
+        // GET: Authenticate
+        public ActionResult Index()
+        {
+            return View("HomePage2");
+        }
+
+        public ActionResult Login(LoginRequest loginRequest)
         {
             var loginResponse = new LoginResponse();
-            LoginInternal(userName, password, ref loginResponse);
-            return new HttpResponseMessage() { Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(loginResponse), System.Text.Encoding.UTF8, "application/json") }; ;
+            LoginInternal(loginRequest.Username, loginRequest.Password, ref loginResponse);
+
+            if (loginResponse.IsLoginSuccessful)
+                return View("Index");
+            else
+                return View("HomePage2");
         }
 
         #region Private Methods

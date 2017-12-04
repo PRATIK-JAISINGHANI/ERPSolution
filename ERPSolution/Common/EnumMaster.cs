@@ -20,5 +20,18 @@ namespace ERPSolution.Common
             Validated = 2,
             Suspended = 3
         }
+
+        public enum AuthenticationTypeValues : int
+        {
+            Web = 1,
+            Mobile = 2
+        }
+
+        public enum SessionStatusValues : int
+        {
+            LoggedIn = 1,
+            LoggedOff = 2,
+            FoundOrphan = 3
+        }
     }
 }
