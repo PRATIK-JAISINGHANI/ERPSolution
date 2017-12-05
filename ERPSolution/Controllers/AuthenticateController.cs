@@ -12,6 +12,8 @@ namespace ERPSolution.Controllers
 {
     public class AuthenticateController : Controller
     {
+        #region Public Methods
+
         // GET: Authenticate
         public ActionResult Index()
         {
@@ -36,6 +38,8 @@ namespace ERPSolution.Controllers
             else
                 return View("Index");
         }
+
+        #endregion
 
         #region Private Methods
 

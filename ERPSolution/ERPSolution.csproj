@@ -162,7 +162,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\EnumMaster.cs" />
     <Compile Include="Controllers\AuthenticateController.cs" />
-    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Controllers\UserMasterController.cs" />
