@@ -26,7 +26,15 @@ namespace ERPSolution.Controllers
             if (loginResponse.IsLoginSuccessful)
                 return View("Index");
             else
-                return View("HomePage2");
+                return RedirectToAction("Index");
+        }
+
+        public ActionResult LogOff(LogOffRequest request)
+        {
+            if (LogOffInternal(request))
+                return RedirectToAction("Index");
+            else
+                return View("Index");
         }
 
         #region Private Methods
@@ -52,6 +60,10 @@ namespace ERPSolution.Controllers
             }
         }
 
+        private bool LogOffInternal(LogOffRequest request)
+        {
+            return SessionHelper.LogOffSession(request.SessionId, request.AuthenticationToken);
+        }
         #endregion
     }
 }

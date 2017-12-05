@@ -169,6 +169,7 @@
     <Compile Include="DataContracts\IdentityRequest.cs" />
     <Compile Include="DataContracts\LoginRequest.cs" />
     <Compile Include="DataContracts\LoginResponse.cs" />
+    <Compile Include="DataContracts\LogOffRequest.cs" />
     <Compile Include="Generic\DbHelper.cs" />
     <Compile Include="Generic\EntityBase.cs" />
     <Compile Include="Global.asax.cs">

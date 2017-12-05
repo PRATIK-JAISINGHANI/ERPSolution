@@ -35,6 +35,19 @@ namespace ERPSolution.Helper
             return session;
         }
 
+        public static bool LogOffSession(Guid sessionId, Guid authenticationToken)
+        {
+            var existingSession = EntityBase.ERPContext.Session.Where(s => s.Id == sessionId && s.AuthenticationToken == authenticationToken && s.SessionStatus == SessionStatusValues.LoggedIn).FirstOrDefault();
+            if (existingSession == null)
+                return true;
+            //
+            if(existingSession != null)
+            {
+                existingSession.SessionStatus = SessionStatusValues.LoggedOff;
+                return EntityBase.ERPContext.SaveChanges() > 0 ? true : false;
+            }
+            return false;
+        }
         #endregion
 
         #region Private Methods
