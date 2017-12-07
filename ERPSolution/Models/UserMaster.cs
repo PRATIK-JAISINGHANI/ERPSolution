@@ -32,9 +32,7 @@ namespace ERPSolution.Models
 
         public override bool DeleteAll()
         {
-            var context = EntityBase.ERPContext;
-            context.UserMaster.Remove(this);
-            return context.SaveChanges() > 0 ? true : false;
+            return base.DeleteAll();
         }
 
         #endregion

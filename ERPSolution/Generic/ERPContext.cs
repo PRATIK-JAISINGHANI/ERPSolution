@@ -9,10 +9,32 @@ namespace ERPSolution.Models
 {
     public class ERPContext : DbContext
     {
+        #region Protected Methods
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //
+            modelBuilder.
+                Properties().
+                Where(p => 
+                    p.Name.ToUpper() == "ID" && 
+                    p.PropertyType == typeof(Guid)).
+                    Configure(p => p.IsKey());
+
+            modelBuilder.
+                Properties().
+                Where(p => 
+                    p.Name == "Code" && 
+                    p.PropertyType == typeof(string)).
+                    Configure(p => p.HasMaxLength(200));
+
+            modelBuilder.Entity<UserMaster>().MapToStoredProcedures();
         }
+
+        #endregion
+
+        #region Entities that needs to be saved in Db
 
         public DbSet<Session> Session { get; set; }
 
@@ -21,5 +43,7 @@ namespace ERPSolution.Models
         public DbSet<Identity> Identity { get; set; }
 
         public DbSet<SecureData> SecureData { get; set; }
+
+        #endregion
     }
 }
