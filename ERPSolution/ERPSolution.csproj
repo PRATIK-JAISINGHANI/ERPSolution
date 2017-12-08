@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201712041050235_Second.Designer.cs">
       <DependentUpon>201712041050235_Second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712080526348_Third.cs" />
+    <Compile Include="Migrations\201712080526348_Third.Designer.cs">
+      <DependentUpon>201712080526348_Third.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Generic\ERPContext.cs" />
     <Compile Include="Generic\ERPInitializer.cs" />
@@ -264,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041050235_Second.resx">
       <DependentUpon>201712041050235_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712080526348_Third.resx">
+      <DependentUpon>201712080526348_Third.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

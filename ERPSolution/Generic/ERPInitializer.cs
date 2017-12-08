@@ -64,6 +64,10 @@ namespace ERPSolution.Models
             secureData.CreatedDateTime = DateTime.Now;
             secureData.SaveAll();
 
+            var user3 = EntityBase.ERPContext.UserMaster.Where(um => um.Code == "CodenameDj").First();
+            user3.Code = "CodenameDj2410";
+            user3.SaveAll();
+
         }
     }
 }
