@@ -175,7 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CryptoHelper.cs" />
     <Compile Include="Helper\SessionHelper.cs" />
+    <Compile Include="InitializerModels\ApplicationDefaults.cs" />
     <Compile Include="Migrations\201712040639305_First.cs" />
     <Compile Include="Migrations\201712040639305_First.Designer.cs">
       <DependentUpon>201712040639305_First.cs</DependentUpon>
@@ -187,6 +189,10 @@
     <Compile Include="Migrations\201712080526348_Third.cs" />
     <Compile Include="Migrations\201712080526348_Third.Designer.cs">
       <DependentUpon>201712080526348_Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801122030565_Fourth.cs" />
+    <Compile Include="Migrations\201801122030565_Fourth.Designer.cs">
+      <DependentUpon>201801122030565_Fourth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Generic\ERPContext.cs" />
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712080526348_Third.resx">
       <DependentUpon>201712080526348_Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801122030565_Fourth.resx">
+      <DependentUpon>201801122030565_Fourth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

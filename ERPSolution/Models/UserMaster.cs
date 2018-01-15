@@ -9,6 +9,18 @@ namespace ERPSolution.Models
 {
     public class UserMaster : MastersBase
     {
+        #region Construstors
+
+        public UserMaster()
+            : base()
+        { }
+
+        public UserMaster(Guid Id)
+            : base(Id)
+        { }
+
+        #endregion
+
         #region Properties
 
         public Guid IdentityId { get; set; }

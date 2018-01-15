@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,8 +12,11 @@ namespace ERPSolution.Generic
 
         public static bool SaveAll(Type type, object entityObject)
         {
-            if(EntityBase.ERPContext.Entry(entityObject).State == System.Data.Entity.EntityState.Detached)
+            if (EntityBase.ERPContext.Entry(entityObject).State == System.Data.Entity.EntityState.Detached)
                 EntityBase.ERPContext.Set(type).Add(entityObject);
+
+            if(EntityBase.ERPContext.Entry(entityObject).State == System.Data.Entity.EntityState.Modified)
+                return EntityBase.ERPContext.SaveChanges() > 0 ? true : false;
             //
             return EntityBase.ERPContext.SaveChanges() > 0 ? true : false;
         }

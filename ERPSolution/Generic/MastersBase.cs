@@ -14,7 +14,12 @@ namespace ERPSolution.Models
         public MastersBase()
             : base()
         {
+            Init();
         }
+
+        public MastersBase(Guid Id)
+            : base()
+        { }
 
         #endregion
 
@@ -30,6 +35,17 @@ namespace ERPSolution.Models
 
         [Required]
         public DateTime CreatedDateTime { get; set; }
+
+        #endregion
+
+        #region Private Methods
+
+        private void Init()
+        {
+            Id = Guid.NewGuid();
+            CreatedBy = Guid.NewGuid();
+            CreatedDateTime = DateTime.Now;
+        }
 
         #endregion
 

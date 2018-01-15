@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using ERPSolution.InitializerModels;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -35,6 +37,8 @@ namespace ERPSolution.Models
         #endregion
 
         #region Entities that needs to be saved in Db
+
+        public DbSet<ApplicationDefaults> ApplicationDefaults { get; set; }
 
         public DbSet<Session> Session { get; set; }
 

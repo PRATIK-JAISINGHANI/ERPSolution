@@ -1,4 +1,5 @@
 ﻿using ERPSolution.Generic;
+using ERPSolution.InitializerModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,6 +21,7 @@ namespace ERPSolution.Models
             base.Seed(context);
             //
             EntityBase.ERPContext = context;
+            EntityBase.InstanceValues = EntityBase.ERPContext.ApplicationDefaults.Where(ad => ad.IsActive == true).ToList<ApplicationDefaults>();
             //
             foreach (var user2 in EntityBase.ERPContext.UserMaster)
                 EntityBase.ERPContext.UserMaster.Remove(user2);
@@ -32,42 +34,31 @@ namespace ERPSolution.Models
 
             EntityBase.ERPContext.SaveChanges();
             //
-
             var identity = new Identity();
-            identity.Id = Guid.NewGuid();
             identity.Name = "Pratik";
             identity.Code = "CodenameDJ";
             identity.EMailId = "pratik.jaisinghani2013@gmail.com";
-            identity.CreatedBy = Guid.NewGuid();
             identity.MobileNo = "8055333533";
             identity.ValidationStatus = Common.EnumMaster.ValidationStatus.Suspended;
-            identity.CreatedDateTime = DateTime.Now;
             var result = identity.SaveAll();
 
             var user = new UserMaster();
-            user.Id = Guid.NewGuid();
             user.IdentityId = identity.Id;
             user.ContactId = Guid.NewGuid();
             user.Code = identity.Code;
             user.Gender = Common.EnumMaster.Gender.Male;
             user.Name = identity.Name;
             user.MobileNo = identity.MobileNo;
-            user.CreatedBy = identity.CreatedBy;
-            user.CreatedDateTime = DateTime.Now;
             user.SaveAll();
 
             var secureData = new SecureData();
-            secureData.Id = Guid.NewGuid();
             secureData.IdentityId = identity.Id;
             secureData.Data = "q";
-            secureData.CreatedBy = user.CreatedBy;
-            secureData.CreatedDateTime = DateTime.Now;
             secureData.SaveAll();
 
             var user3 = EntityBase.ERPContext.UserMaster.Where(um => um.Code == "CodenameDj").First();
             user3.Code = "CodenameDj2410";
             user3.SaveAll();
-
         }
     }
 }
