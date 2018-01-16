@@ -21,7 +21,7 @@ namespace ERPSolution.Models
             base.Seed(context);
             //
             EntityBase.ERPContext = context;
-            EntityBase.InstanceValues = EntityBase.ERPContext.ApplicationDefaults.Where(ad => ad.IsActive == true).ToList<ApplicationDefaults>();
+            
             //
             foreach (var user2 in EntityBase.ERPContext.UserMaster)
                 EntityBase.ERPContext.UserMaster.Remove(user2);
@@ -32,7 +32,19 @@ namespace ERPSolution.Models
             foreach (var secureData2 in EntityBase.ERPContext.SecureData)
                 EntityBase.ERPContext.SecureData.Remove(secureData2);
 
+            foreach (var instanceValues in EntityBase.ERPContext.ApplicationDefaults)
+                EntityBase.ERPContext.ApplicationDefaults.Remove(instanceValues);
+
             EntityBase.ERPContext.SaveChanges();
+
+            var applicationDefault = new ApplicationDefaults();
+            applicationDefault.PropertyName = "EncryptionKey";
+            applicationDefault.DataType = "System.String";
+            applicationDefault.Value = "MAKV2SPBNI99212";
+            applicationDefault.IsActive = true;
+            applicationDefault.SaveAll();
+            //
+            EntityBase.InstanceValues = EntityBase.ERPContext.ApplicationDefaults.Where(ad => ad.IsActive == true).ToList<ApplicationDefaults>();
             //
             var identity = new Identity();
             identity.Name = "Pratik";

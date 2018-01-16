@@ -8,6 +8,18 @@ namespace ERPSolution.Models
 {
     public class Session : MastersBase
     {
+        #region Constructor
+
+        public Session()
+            : base(Common.EntityTypeName.Session)
+        { }
+
+        public Session(Guid Id)
+            : base(Common.EntityTypeName.Session, Id)
+        { }
+
+        #endregion
+
         #region Properties
 
         public Guid AuthenticationToken { get; set; }

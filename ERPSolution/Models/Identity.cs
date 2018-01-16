@@ -13,9 +13,12 @@ namespace ERPSolution.Models
         #region Constructor
 
         public Identity()
-        {
-            Init();
-        }
+            : base(Common.EntityTypeName.Identity)
+        { }
+
+        public Identity(Guid Id)
+            : base(Common.EntityTypeName.Identity, Id)
+        { }
 
         #endregion
 

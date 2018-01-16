@@ -5,6 +5,7 @@ using System.Web;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
+using ERPSolution.Generic;
 
 namespace ERPSolution.Helper
 {
@@ -12,7 +13,7 @@ namespace ERPSolution.Helper
     {
         #region Declarations
 
-        private static string EncryptionKey = "MAKV2SPBNI99212";
+        private static string EncryptionKey = EntityBase.InstanceValues.Where(iv => iv.PropertyName.ToUpper() == "ENCRYPTIONKEY").Select(iv => iv.Value).ToString();
 
         #endregion
 
@@ -23,7 +24,6 @@ namespace ERPSolution.Helper
             if (string.IsNullOrEmpty(data))
                 return string.Empty;
 
-            string EncryptionKey = "MAKV2SPBNI99212";
             byte[] clearBytes = Encoding.Unicode.GetBytes(data);
             using (Aes encryptor = Aes.Create())
             {
@@ -48,7 +48,7 @@ namespace ERPSolution.Helper
             if (string.IsNullOrEmpty(data))
                 return string.Empty;
             //
-            string EncryptionKey = "MAKV2SPBNI99212";
+            //string EncryptionKey = "MAKV2SPBNI99212";
             byte[] cipherBytes = Convert.FromBase64String(data);
             using (Aes encryptor = Aes.Create())
             {

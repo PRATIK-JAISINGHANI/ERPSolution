@@ -12,11 +12,11 @@ namespace ERPSolution.Models
         #region Construstors
 
         public UserMaster()
-            : base()
+            : base(Common.EntityTypeName.UserMaster)
         { }
 
         public UserMaster(Guid Id)
-            : base(Id)
+            : base(Common.EntityTypeName.UserMaster, Id)
         { }
 
         #endregion

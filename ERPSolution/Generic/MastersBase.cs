@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects.DataClasses;
+using ERPSolution.Common;
 
 namespace ERPSolution.Models
 {
@@ -11,21 +14,21 @@ namespace ERPSolution.Models
     {
         #region Constructor
 
-        public MastersBase()
-            : base()
+        public MastersBase(EntityTypeName entityType)
+            : base(entityType)
         {
             Init();
         }
 
-        public MastersBase(Guid Id)
-            : base()
+        public MastersBase(EntityTypeName entityType, Guid Id)
+            : base(entityType)
         { }
 
         #endregion
 
         #region Properties 
 
-        public ERPContext Context { get { return new ERPContext(); } }
+        //public ERPContext Context { get { return new ERPContext(); } }
 
         [Required]
         public Guid Id { get; set; }
@@ -45,6 +48,11 @@ namespace ERPSolution.Models
             Id = Guid.NewGuid();
             CreatedBy = Guid.NewGuid();
             CreatedDateTime = DateTime.Now;
+        }
+
+        private object GetEntity(Guid id)
+        {
+            return EntityBase.ERPContext.Entry(this).Entity;
         }
 
         #endregion

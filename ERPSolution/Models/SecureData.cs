@@ -10,6 +10,17 @@ namespace ERPSolution.Models
 {
     public class SecureData : MastersBase
     {
+        #region Constructor
+
+        public SecureData()
+            : base(Common.EntityTypeName.SecureData)
+        { }
+
+        public SecureData(Guid Id)
+            : base(Common.EntityTypeName.SecureData, Id)
+        { }
+
+        #endregion
         #region Declarations 
 
         private string _Data;
@@ -27,7 +38,7 @@ namespace ERPSolution.Models
             }
             set
             {
-                 _Data = CryptoHelper.EncryptData(value);
+                 value = CryptoHelper.EncryptData(value);
             }
         }
 
