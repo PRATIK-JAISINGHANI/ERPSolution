@@ -14,15 +14,16 @@ namespace ERPSolution.Models
     {
         #region Constructor
 
-        public MastersBase(EntityTypeName entityType)
-            : base(entityType)
+        public MastersBase()
+            : base()
         {
             Init();
         }
 
-        public MastersBase(EntityTypeName entityType, Guid Id)
-            : base(entityType)
-        { }
+        public MastersBase(Guid Id)
+            : base()
+        {
+        }
 
         #endregion
 
@@ -52,7 +53,7 @@ namespace ERPSolution.Models
 
         private object GetEntity(Guid id)
         {
-            return EntityBase.ERPContext.Entry(this).Entity;
+            return EntityBase.ERPContext.Set(this.GetType()).Find(id);
         }
 
         #endregion

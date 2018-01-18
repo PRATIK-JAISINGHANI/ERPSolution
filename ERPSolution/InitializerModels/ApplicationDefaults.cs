@@ -13,11 +13,11 @@ namespace ERPSolution.InitializerModels
         #region Constructor
 
         public ApplicationDefaults() 
-            : base(EntityTypeName.ApplicationDefaults)
+            : base()
         { }
 
         public ApplicationDefaults(Guid Id) :
-            base (EntityTypeName.ApplicationDefaults, Id)
+            base (Id)
         { }
 
         #endregion

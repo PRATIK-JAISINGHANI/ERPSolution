@@ -11,11 +11,11 @@ namespace ERPSolution.Models
         #region Constructor
 
         public Session()
-            : base(Common.EntityTypeName.Session)
+            : base()
         { }
 
         public Session(Guid Id)
-            : base(Common.EntityTypeName.Session, Id)
+            : base(Id)
         { }
 
         #endregion

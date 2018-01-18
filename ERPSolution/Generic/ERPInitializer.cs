@@ -68,9 +68,11 @@ namespace ERPSolution.Models
             secureData.Data = "q";
             secureData.SaveAll();
 
-            var user3 = EntityBase.ERPContext.UserMaster.Where(um => um.Code == "CodenameDj").First();
-            user3.Code = "CodenameDj2410";
-            user3.SaveAll();
+            //var user3 = EntityBase.ERPContext.UserMaster.Where(um => um.Code == "CodenameDj").First();
+            //user3.Code = "CodenameDj2410";
+            //user3.SaveAll();
+
+            var userEdit = new UserMaster(Guid.Parse(user.Id.ToString()));
         }
     }
 }

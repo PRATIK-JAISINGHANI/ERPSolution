@@ -14,9 +14,8 @@ namespace ERPSolution.Generic
     {
         #region Constructor
 
-        public EntityBase(EntityTypeName entityType)
+        public EntityBase()
         {
-            EntityType = entityType;
         }
 
         #endregion
@@ -26,8 +25,6 @@ namespace ERPSolution.Generic
         public static ERPContext ERPContext { get; set; }
 
         public static List<ApplicationDefaults> InstanceValues { get; set; }
-
-        public EntityTypeName EntityType { get; set; }
 
         #endregion
     }

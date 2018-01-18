@@ -12,12 +12,13 @@ namespace ERPSolution.Models
         #region Construstors
 
         public UserMaster()
-            : base(Common.EntityTypeName.UserMaster)
+            : base()
         { }
 
         public UserMaster(Guid Id)
-            : base(Common.EntityTypeName.UserMaster, Id)
-        { }
+            : base(Id)
+        {
+        }
 
         #endregion
 
@@ -36,6 +37,10 @@ namespace ERPSolution.Models
         public string MobileNo { get; set; }
 
         public bool IsActive { get; set; }
+
+        #endregion
+
+        #region Public Methods
 
         public override bool SaveAll()
         {

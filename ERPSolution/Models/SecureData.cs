@@ -13,11 +13,11 @@ namespace ERPSolution.Models
         #region Constructor
 
         public SecureData()
-            : base(Common.EntityTypeName.SecureData)
+            : base()
         { }
 
         public SecureData(Guid Id)
-            : base(Common.EntityTypeName.SecureData, Id)
+            : base(Id)
         { }
 
         #endregion
@@ -31,16 +31,7 @@ namespace ERPSolution.Models
 
         public Guid IdentityId { get; set; }
 
-        public string Data
-        { get
-            {
-                return CryptoHelper.DecryptData(_Data);
-            }
-            set
-            {
-                 value = CryptoHelper.EncryptData(value);
-            }
-        }
+        public string Data { get; set; }
 
         public override bool SaveAll()
         {

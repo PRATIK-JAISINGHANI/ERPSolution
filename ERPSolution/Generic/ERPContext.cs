@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using System.Data.Entity.Core.Objects.DataClasses;
 
 namespace ERPSolution.Models
 {
@@ -41,6 +42,11 @@ namespace ERPSolution.Models
         public DbSet<ApplicationDefaults> ApplicationDefaults { get; set; }
 
         public DbSet<Session> Session { get; set; }
+
+        internal EntityObject Entry<T>()
+        {
+            throw new NotImplementedException();
+        }
 
         public DbSet<UserMaster> UserMaster { get; set;}
 
