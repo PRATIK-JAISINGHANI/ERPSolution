@@ -1,5 +1,7 @@
 ﻿using ERPSolution.Generic;
+using ERPSolution.Helper;
 using ERPSolution.InitializerModels;
+using ERPSolution.MetadataModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,6 +37,9 @@ namespace ERPSolution.Models
             foreach (var instanceValues in EntityBase.ERPContext.ApplicationDefaults)
                 EntityBase.ERPContext.ApplicationDefaults.Remove(instanceValues);
 
+            foreach (var entity1 in EntityBase.ERPContext.EntityMaster)
+                EntityBase.ERPContext.EntityMaster.Remove(entity1);
+
             EntityBase.ERPContext.SaveChanges();
 
             var applicationDefault = new ApplicationDefaults();
@@ -44,7 +49,18 @@ namespace ERPSolution.Models
             applicationDefault.IsActive = true;
             applicationDefault.SaveAll();
             //
+            var entity = new EntityMaster();
+            entity.EntityType = Common.EntityTypeName.UserMaster;
+            entity.EntityName = "UserMaster";
+            entity.AssemblyName = "ERPSolution";
+            entity.NamespaceName = "ERPSolution.Models.UserMaster";
+            entity.IsParent = true;
+            entity.IsChild = false;
+            entity.SaveAll();
+            //
             EntityBase.InstanceValues = EntityBase.ERPContext.ApplicationDefaults.Where(ad => ad.IsActive == true).ToList<ApplicationDefaults>();
+            //
+            Metadata.Entities = EntityBase.ERPContext.EntityMaster.ToList<EntityMaster>();
             //
             var identity = new Identity();
             identity.Name = "Pratik";
@@ -72,7 +88,11 @@ namespace ERPSolution.Models
             //user3.Code = "CodenameDj2410";
             //user3.SaveAll();
 
-            var userEdit = new UserMaster(Guid.Parse(user.Id.ToString()));
+            //var userEdit = new UserMaster(Guid.Parse(user.Id.ToString()));
+
+            //Type typeName = Type.GetType("ERPSolution.Models.UserMaster");
+            var userdata = EntityHelper.GetEntity(Common.EntityTypeName.UserMaster, user.Id);
+            
         }
     }
 }

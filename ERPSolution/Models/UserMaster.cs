@@ -1,7 +1,9 @@
 ﻿using ERPSolution.Generic;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using static ERPSolution.Common.EnumMaster;
 
@@ -17,8 +19,7 @@ namespace ERPSolution.Models
 
         public UserMaster(Guid Id)
             : base(Id)
-        {
-        }
+        {  }
 
         #endregion
 
@@ -37,6 +38,10 @@ namespace ERPSolution.Models
         public string MobileNo { get; set; }
 
         public bool IsActive { get; set; }
+
+        #endregion
+
+        #region Private Methods
 
         #endregion
 

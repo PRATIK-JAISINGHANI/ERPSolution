@@ -29,8 +29,6 @@ namespace ERPSolution.Models
 
         #region Properties 
 
-        //public ERPContext Context { get { return new ERPContext(); } }
-
         [Required]
         public Guid Id { get; set; }
 
@@ -46,12 +44,15 @@ namespace ERPSolution.Models
 
         private void Init()
         {
-            Id = Guid.NewGuid();
-            CreatedBy = Guid.NewGuid();
-            CreatedDateTime = DateTime.Now;
+            if (EntityBase.ERPContext.Entry(this).State == EntityState.Detached)
+            {
+                Id = Guid.NewGuid();
+                CreatedBy = Guid.NewGuid();
+                CreatedDateTime = DateTime.Now;
+            }
         }
 
-        private object GetEntity(Guid id)
+        protected virtual object GetEntity(Guid id)
         {
             return EntityBase.ERPContext.Set(this.GetType()).Find(id);
         }

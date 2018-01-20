@@ -7,6 +7,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 using System.Data.Entity.Core.Objects.DataClasses;
+using ERPSolution.MetadataModels;
 
 namespace ERPSolution.Models
 {
@@ -39,20 +40,25 @@ namespace ERPSolution.Models
 
         #region Entities that needs to be saved in Db
 
+        #region Metadata Entities
+
+        public DbSet<EntityMaster> EntityMaster { get; set; }
+
+        #endregion
+
+        #region Model Entities
+
         public DbSet<ApplicationDefaults> ApplicationDefaults { get; set; }
 
         public DbSet<Session> Session { get; set; }
-
-        internal EntityObject Entry<T>()
-        {
-            throw new NotImplementedException();
-        }
 
         public DbSet<UserMaster> UserMaster { get; set;}
 
         public DbSet<Identity> Identity { get; set; }
 
         public DbSet<SecureData> SecureData { get; set; }
+
+        #endregion
 
         #endregion
     }
