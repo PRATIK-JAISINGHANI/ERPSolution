@@ -21,6 +21,7 @@ namespace ERPSolution.Models
         { }
 
         #endregion
+
         #region Declarations 
 
         private string _Data;
@@ -32,6 +33,10 @@ namespace ERPSolution.Models
         public Guid IdentityId { get; set; }
 
         public string Data { get; set; }
+
+        #endregion
+
+        #region Public Methods
 
         public override bool SaveAll()
         {

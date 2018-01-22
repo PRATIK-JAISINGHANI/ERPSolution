@@ -31,9 +31,6 @@ namespace ERPSolution.Models
             foreach (var id in EntityBase.ERPContext.Identity)
                 EntityBase.ERPContext.Identity.Remove(id);
 
-            foreach (var secureData2 in EntityBase.ERPContext.SecureData)
-                EntityBase.ERPContext.SecureData.Remove(secureData2);
-
             foreach (var instanceValues in EntityBase.ERPContext.ApplicationDefaults)
                 EntityBase.ERPContext.ApplicationDefaults.Remove(instanceValues);
 
@@ -57,10 +54,24 @@ namespace ERPSolution.Models
             entity.IsParent = true;
             entity.IsChild = false;
             entity.SaveAll();
+
+            var entity2 = new EntityMaster();
+            entity2.EntityType = Common.EntityTypeName.Identity;
+            entity2.EntityName = "Identity";
+            entity2.AssemblyName = "ERPSolution";
+            entity2.NamespaceName = "ERPSolution.Models.Identity";
+            entity2.IsParent = true;
+            entity2.IsChild = false;
+            entity2.SaveAll();
             //
             EntityBase.InstanceValues = EntityBase.ERPContext.ApplicationDefaults.Where(ad => ad.IsActive == true).ToList<ApplicationDefaults>();
             //
             Metadata.Entities = EntityBase.ERPContext.EntityMaster.ToList<EntityMaster>();
+
+            //foreach (var secureData2 in EntityBase.ERPContext.SecureData)
+            //    EntityBase.ERPContext.SecureData.Remove(secureData2);
+
+            //EntityBase.ERPContext.SaveChanges();
             //
             var identity = new Identity();
             identity.Name = "Pratik";
@@ -89,10 +100,11 @@ namespace ERPSolution.Models
             //user3.SaveAll();
 
             //var userEdit = new UserMaster(Guid.Parse(user.Id.ToString()));
-
+            AuthenticationHelper.Authenticate(identity.Code, secureData.Data);
             //Type typeName = Type.GetType("ERPSolution.Models.UserMaster");
-            var userdata = EntityHelper.GetEntity(Common.EntityTypeName.UserMaster, user.Id);
-            
+            var userdata = EntityHelper.GetEntity(Common.EntityTypeName.UserMaster, user.Id) as UserMaster;
+            userdata.MobileNo = "7020328833";
+            userdata.SaveAll();
         }
     }
 }

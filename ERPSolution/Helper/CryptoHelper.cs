@@ -13,7 +13,7 @@ namespace ERPSolution.Helper
     {
         #region Declarations
 
-        private static string EncryptionKey = EntityBase.InstanceValues.Where(iv => iv.PropertyName.ToUpper() == "ENCRYPTIONKEY").Select(iv => iv.Value).ToString();
+        private static readonly string EncryptionKey = EntityBase.InstanceValues.Where(iv => iv.PropertyName.ToUpper() == "ENCRYPTIONKEY").Select(iv => iv.Value).FirstOrDefault();
 
         #endregion
 
